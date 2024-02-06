@@ -2,10 +2,18 @@
 import shortid from "shortid";
 
 const ADD_TODO = "ADD_TODO";
+const SWITCH_TODO = "SWITCH_TODO";
 
 export const addTodo = (payload) => {
   return {
     type: ADD_TODO,
+    payload
+  };
+};
+
+export const switchTodo = (payload) => {
+  return {
+    type: SWITCH_TODO,
     payload
   };
 };
@@ -37,12 +45,13 @@ const todos = (state = initialState, action) => {
     case "DELETE_TODO":
       return; //TODO: 여기 작성
 
-    case "SWITCH_TODO":
-      const { id } = action.payload;
-      state.find((el) => {
+    case SWITCH_TODO:
+      const id = action.payload;
+      const findData = state.find((el) => {
         return el.id === id;
       });
-      return; //TODO: 여기 작성
+      console.log(findData);
+      return state; //TODO: 여기 작성
 
     default:
       return state;

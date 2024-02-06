@@ -1,9 +1,14 @@
 import React from "react";
 import { ItemBox } from "./TodoItemStyle";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { switchTodo } from "../../redux/modules/todos";
 
 export default function TodoItem({ data }) {
-  const toggleState = () => {};
+  const dispatch = useDispatch();
+  const toggleState = () => {
+    dispatch(switchTodo(data.id));
+  };
 
   return (
     <ItemBox>
