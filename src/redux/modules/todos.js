@@ -38,6 +38,10 @@ const todos = (state = initialState, action) => {
       return; //TODO: 여기 작성
 
     case "SWITCH_TODO":
+      const { id } = action.payload;
+      state.find((el) => {
+        return el.id === id;
+      });
       return; //TODO: 여기 작성
 
     default:
